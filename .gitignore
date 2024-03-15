@@ -1,11 +1,26 @@
+# misc
 .DS_Store
-node_modules
-.turbo
 *.log
+.cache
+*.local
+
+# build output
 dist
 dist-ssr
-*.local
-.env
-.cache
 server/dist
 public/dist
+
+# npm
+node_modules
+
+# turbo
+.turbo
+
+# yarn - see https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
