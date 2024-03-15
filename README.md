@@ -1,33 +1,47 @@
-# `Turborepo` Vite starter
+# Monorepo with typescript, turbo, react, vite, storybook, jest, estlint and prettier
 
-This is an official starter Turborepo.
+## Getting started
 
-## Using this example
+1. Install node-version or nvm and ensure to use the pinned version - or otherwise install the correct Node Version (rever to `.node-version`)
+2. Enable corepack `corepack enable`
+3. Ensure the corret yarn version using `yarn set version <desired-version>`. Refer to `package.json` for the version to use.
+4. Run `yarn` in the repo root
 
-Run the following command:
+Now you should be able to run the apps and the varios commands, e.g., `yarn lint` to perform static code analysis. Refer to `package.json` in the root for other repo-wide scripts.
 
-```sh
-npx create-turbo@latest -e with-vite
+## Tools and relevant reading
+
+- [TurboRepo](https://turbo.build/repo/docs)
+- [Vite](https://vitejs.dev/)
+  - [https://earthly.dev/blog/yarn-vite-monorepo/](https://earthly.dev/blog/yarn-vite-monorepo/)
+  - [https://medium.com/@srinivasthedeveloper/creating-a-cool-react-component-library-with-vite-and-typescript-1179003a3e0f](https://medium.com/@srinivasthedeveloper/creating-a-cool-react-component-library-with-vite-and-typescript-1179003a3e0f)
+- [Storybook](https://storybook.js.org/)
+- [Jest](https://jestjs.io/) - _TBC..._
+- [Yarn workspaces](https://yarnpkg.com/features/workspaces)
+
+## Targetting specific packages
+
+**Using Yarn workspaces (recommended for installing new npm packages)**
+
+```bash
+yarn workspace <workspace-name> add [--dev] <package-name>
 ```
 
-## What's inside?
+- `<workspace-name>` is according to each package's `package.json` file
+- `<package-name>` is what you wantt to install
 
-This Turborepo includes the following packages and apps:
+**Using turborepo (recommended for ALL other tasks)**
 
-### Apps and Packages
+> **Note:** By default, Turbo will skip any package that does not have the command the requested command.
 
-- `docs`: a vanilla [vite](https://vitejs.dev) ts app
-- `web`: another vanilla [vite](https://vitejs.dev) ts app
-- `@repo/ui`: a stub component & utility library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: shared `eslint` configurations
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+```bash
+yarn <command> --filter <workspace-name>
+```
 
-Each package and app is 100% [TypeScript](https://www.typescriptlang.org/).
+## TODO - known caveats
 
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+1. Add `jest` with example unit tests
+2. Add commit hooks - using husky or native?
+3. Hot reload of `apps` is not working when updating one of the `packages`.
+   - It could be that this is an _"issue"_ (or even intentional behaviour) of `vite` at this time.
+   - Currernt work around is to reference source files directly. It has the advantage that we can avoid having to reinstall dependencies when they change. But we still have to restart dev mode using `yarn dev --force`.

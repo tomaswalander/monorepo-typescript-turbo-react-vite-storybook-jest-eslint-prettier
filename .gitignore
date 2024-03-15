@@ -1,6 +1,5 @@
 # misc
 .DS_Store
-*.log
 .cache
 *.local
 
@@ -9,9 +8,14 @@ dist
 dist-ssr
 server/dist
 public/dist
+lib
+tsconfig.tsbuildinfo
 
 # npm
 node_modules
+dist
+dist-ssr
+*.local
 
 # turbo
 .turbo
@@ -24,3 +28,27 @@ node_modules
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Storybook
+*storybook.log
+.storybook-dist

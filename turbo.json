@@ -6,9 +6,13 @@
       "outputs": ["dist/**"]
     },
     "lint": {},
+    "ts": {},
     "dev": {
       "cache": false,
       "persistent": true
+    },
+    "storybook:build": {
+      "outputs": [".storybook-dist/**"]
     }
   }
 }
