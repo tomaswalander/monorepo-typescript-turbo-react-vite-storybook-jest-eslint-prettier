@@ -7,4 +7,12 @@ export default defineConfig({
     include: ['@repo/ui-atoms'],
     force: true,
   },
+  // build: {
+  //   outDir: './dist'
+  // },
+  css: {
+    modules: {
+      localsConvention: 'camelCaseOnly',
+    },
+  },
 })

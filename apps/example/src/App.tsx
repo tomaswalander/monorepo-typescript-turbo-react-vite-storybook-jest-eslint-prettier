@@ -9,7 +9,7 @@ export const App: FC = () => {
     <>
       <Navbar />
       <header>
-        <h1>Welcome to Example</h1>
+        <h1>Welcome</h1>
       </header>
       <main>
         <Button
