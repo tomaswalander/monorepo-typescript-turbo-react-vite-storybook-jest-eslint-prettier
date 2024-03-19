@@ -2,10 +2,13 @@
 
 ## Getting started
 
-1. Install node-version or nvm and ensure to use the pinned version - or otherwise install the correct Node Version (rever to `.node-version`)
-2. Enable corepack `corepack enable`
-3. Ensure the corret yarn version using `yarn set version <desired-version>`. Refer to `package.json` for the version to use.
-4. Run `yarn` in the repo root
+1. Install [nodenv](https://github.com/nodenv/nodenv) or [nvm](https://github.com/nvm-sh/nvm) and ensure to use the pinned version - or otherwise install the correct Node Version (rever to `.node-version`)
+  1.a) If using nvm run `nvm install`
+  1.b) With nodenv run `nodenv install`
+2. Run `node --version` and ensure your version is *v20.11.1*
+3. Enable corepack `corepack enable`
+4. Ensure the correct yarn version using `yarn set version <desired-version>`. Refer to `package.json` for the version to use.
+5. Run `yarn` in the repo root
 
 Now you should be able to run the apps and the varios commands, e.g., `yarn lint` to perform static code analysis. Refer to `package.json` in the root for other repo-wide scripts.
 
@@ -18,6 +21,8 @@ Now you should be able to run the apps and the varios commands, e.g., `yarn lint
 - [Storybook](https://storybook.js.org/)
 - [Jest](https://jestjs.io/) - _TBC..._
 - [Yarn workspaces](https://yarnpkg.com/features/workspaces)
+- Typescript (in monorepos)
+  - I find [this guide](https://moonrepo.dev/docs/guides/javascript/typescript-project-refs#preface) to be comprehensive and thorough.
 
 ## Targetting specific packages
 
@@ -37,6 +42,8 @@ yarn workspace <workspace-name> add [--dev] <package-name>
 ```bash
 yarn <command> --filter <workspace-name>
 ```
+
+Check root `package.json` for available commands.
 
 ## TODO - known caveats
 
