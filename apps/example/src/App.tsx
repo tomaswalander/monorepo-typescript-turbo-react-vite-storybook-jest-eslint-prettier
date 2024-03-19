@@ -1,10 +1,46 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import { Button } from '@repo/ui-atoms'
 
 import './App.css'
 import { Navbar } from './Navbar'
+import { useAuth0 } from '@auth0/auth0-react'
 
 export const App: FC = () => {
+  const {
+    isLoading,
+    isAuthenticated,
+    loginWithRedirect,
+    logout,
+    getAccessTokenSilently,
+  } = useAuth0()
+
+  useEffect(() => {
+    const runner = async () => {
+      const resp = await getAccessTokenSilently()
+      console.log(resp)
+    }
+    runner()
+  }, [isAuthenticated])
+
+  if (isLoading) {
+    return (
+      <>
+        <header>Loading!</header>
+      </>
+    )
+  }
+
+  if (!isAuthenticated) {
+    return (
+      <>
+        <header>You need to login</header>
+        <main>
+          <Button primary={true} onClick={() => loginWithRedirect()} />
+        </main>
+      </>
+    )
+  }
+
   return (
     <>
       <Navbar />
@@ -17,9 +53,8 @@ export const App: FC = () => {
           onClick={() => console.log('hello world')}
           label="Click me!"
         />
-        <p>
-          Get started by editing <code>apps/example/src/App.tsx</code>
-        </p>
+        <p></p>
+        <Button primary={false} onClick={() => logout()} label="Log out!" />
       </main>
     </>
   )

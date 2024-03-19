@@ -3,6 +3,9 @@
 .cache
 *.local
 
+# env - template files should prefix with .template.env[.suffix] and be commited to the repo but actual .env files are always ignored!
+.env*
+
 # build output
 dist
 dist-ssr
